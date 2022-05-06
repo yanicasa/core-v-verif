@@ -317,7 +317,9 @@ merge_report:
     - when: never
   script:
     - ls -al artifacts/reports
+    - echo $DASHBOARD_URL
     - python3 .gitlab-ci/scripts/merge_job_reports.py artifacts/reports pipeline_report_$CI_PIPELINE_ID.yml
+    - ls -al
   artifacts:
     paths:
       - "artifacts/reports/pipeline_report_$CI_PIPELINE_ID.yml"
