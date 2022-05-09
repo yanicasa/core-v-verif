@@ -125,27 +125,16 @@ with open(f'{sys.argv[1]}/{filename}', 'w+') as f:
 
 try:
   print(subprocess.check_output(f'''
-echo "git clone {dashboard_url} .gitlab-ci/dashboard_tmp"
 git clone {dashboard_url} .gitlab-ci/dashboard_tmp
 mkdir -p .gitlab-ci/dashboard_tmp/pipelines_{workflow_repo}
 ls -al {sys.argv[1]}
 cp {sys.argv[1]}/{filename} .gitlab-ci/dashboard_tmp/pipelines_{workflow_repo}/
-ls -al .gitlab-ci/dashboard_tmp/pipelines_{workflow_repo}
 cd .gitlab-ci/dashboard_tmp
-pwd
-git status
 git config user.email {git_email}
 git config user.name {git_name}
-echo "git add pipelines_{workflow_repo}/{filename}"
 git add pipelines_{workflow_repo}/{filename}
-git status
-echo "{workflow_repo}: {title}" 
-echo git commit -m  "{workflow_repo}: {title}" 
-git commit -m  "{workflow_repo}: {title}"|| echo nok && echo fail
-git log
-echo 2
+git commit -m  \"{workflow_repo}: {title}\"
 git push
-echo 3
 cd -
 ''', shell=True))
 except subprocess.CalledProcessError as e:
