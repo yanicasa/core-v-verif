@@ -137,9 +137,11 @@ git status
 git config user.email {git_email}
 git config user.name {git_name}
 echo "git add pipelines_{workflow_repo}/{filename}"
-git add .
-echo 1
-git commit -m  "{workflow_repo}: {title}"
+git add pipelines_{workflow_repo}/{filename}
+git status
+echo "{workflow_repo}: {title}" 
+echo git commit -m  "{workflow_repo}: {title}" 
+git commit -m  "{workflow_repo}: {title}"|| echo nok && echo fail
 git log
 echo 2
 git push
