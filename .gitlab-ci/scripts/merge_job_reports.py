@@ -121,8 +121,8 @@ print(filename)
 with open(f'{sys.argv[1]}/{filename}', 'w+') as f:
     yaml.dump(pipeline, f)
 
-
-
+commit_messsage = f"{workflow_repo}: {title}"
+    
 try:
   print(subprocess.check_output(f'''
 rm -r .gitlab-ci/dashboard_tmp || echo "nothing to do"
@@ -134,8 +134,7 @@ cd .gitlab-ci/dashboard_tmp
 git config user.email {git_email}
 git config user.name {git_name}
 git add pipelines_{workflow_repo}/{filename}
-git commit -m  \"\"{workflow_repo}: {title}\"\" || git commit -m toto
-
+git commit -m  {workflow_repo}:\ {title.replace( ' ','\ '} || commit fail
 git push
 cd -
 ''', shell=True))
