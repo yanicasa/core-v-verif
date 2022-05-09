@@ -125,6 +125,7 @@ with open(f'{sys.argv[1]}/{filename}', 'w+') as f:
 
 try:
   print(subprocess.check_output(f'''
+rm -r .gitlab-ci/dashboard_tmp || echo "nothing to do"
 git clone {dashboard_url} .gitlab-ci/dashboard_tmp
 mkdir -p .gitlab-ci/dashboard_tmp/pipelines_{workflow_repo}
 ls -al {sys.argv[1]}
@@ -133,7 +134,8 @@ cd .gitlab-ci/dashboard_tmp
 git config user.email {git_email}
 git config user.name {git_name}
 git add pipelines_{workflow_repo}/{filename}
-git commit -m  \"\"{workflow_repo}: {title}\"\"
+git commit -m  \"\"{workflow_repo}: {title}\"\" || git commit -m toto
+
 git push
 cd -
 ''', shell=True))
