@@ -125,6 +125,7 @@ with open(f'{sys.argv[1]}/{filename}', 'w+') as f:
 
 try:
   print(subprocess.check_output(f'''
+echo 'git clone {dashboard_url} .gitlab-ci/dashboard_tmp'
 git clone {dashboard_url} .gitlab-ci/dashboard_tmp
 mkdir -p .gitlab-ci/dashboard_tmp/pipelines_{workflow_repo}
 cp {sys.argv[1]}/{filename} .gitlab-ci/dashboard_tmp/pipelines_{workflow_repo}/
