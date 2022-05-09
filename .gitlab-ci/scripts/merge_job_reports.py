@@ -130,11 +130,17 @@ git clone {dashboard_url} .gitlab-ci/dashboard_tmp
 mkdir -p .gitlab-ci/dashboard_tmp/pipelines_{workflow_repo}
 cp {sys.argv[1]}/{filename} .gitlab-ci/dashboard_tmp/pipelines_{workflow_repo}/
 cd .gitlab-ci/dashboard_tmp
+pwd
+git status
 git config user.email {git_email}
 git config user.name {git_name}
 git add pipelines_{workflow_repo}/{filename}
+echo 1
 git commit -m  "{workflow_repo}: {title}"
+git log
+echo 2
 git push
+echo 3
 cd -
 ''', shell=True))
 except subprocess.CalledProcessError as e:
