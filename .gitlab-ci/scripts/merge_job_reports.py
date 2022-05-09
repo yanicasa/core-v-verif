@@ -121,8 +121,6 @@ print(filename)
 with open(f'{sys.argv[1]}/{filename}', 'w+') as f:
     yaml.dump(pipeline, f)
 
-print(f'
-    
 try:
   print(subprocess.check_output(f'''
 rm -r .gitlab-ci/dashboard_tmp || echo "nothing to do"
