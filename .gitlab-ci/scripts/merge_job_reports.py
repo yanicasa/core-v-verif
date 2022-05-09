@@ -128,7 +128,9 @@ try:
 echo "git clone {dashboard_url} .gitlab-ci/dashboard_tmp"
 git clone {dashboard_url} .gitlab-ci/dashboard_tmp
 mkdir -p .gitlab-ci/dashboard_tmp/pipelines_{workflow_repo}
+ls -al {sys.argv[1]}
 cp {sys.argv[1]}/{filename} .gitlab-ci/dashboard_tmp/pipelines_{workflow_repo}/
+ls -al .gitlab-ci/dashboard_tmp/pipelines_{workflow_repo}
 cd .gitlab-ci/dashboard_tmp
 pwd
 git status
