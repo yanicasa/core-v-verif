@@ -136,6 +136,7 @@ pwd
 git status
 git config user.email {git_email}
 git config user.name {git_name}
+echo "git add pipelines_{workflow_repo}/{filename}"
 git add pipelines_{workflow_repo}/{filename}
 echo 1
 git commit -m  "{workflow_repo}: {title}"
