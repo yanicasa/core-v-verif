@@ -133,7 +133,7 @@ cd .gitlab-ci/dashboard_tmp
 git config user.email {git_email}
 git config user.name {git_name}
 git add pipelines_{workflow_repo}/{filename}
-git commit -m  \"{workflow_repo}: {title}\"
+git commit -m  \"\"{workflow_repo}: {title}\"\"
 git push
 cd -
 ''', shell=True))
